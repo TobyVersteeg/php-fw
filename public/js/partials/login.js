@@ -26,11 +26,14 @@ $(document).ready(function() {
             data: $(this).serialize(),
             success: function(result) {
                 const data = JSON.parse(result)
+
                 if (data.success) {
+                    document.cookie = "loged_in=1";
+                    localStorage.setItem('myCat', 'Tom');
                     $('form[name="frmLogin"] input[type="submit"]').prop('disabled', false)
                     window.location.href = "/";
                 } else {
-                    $('#login-message').html('Unkown error.').show()
+                    $('#login-message').html(data.message).show()
                 }
             }
         })

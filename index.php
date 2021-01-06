@@ -6,8 +6,10 @@ use App\Libraries\Request;
 require 'Core/bootstrap.php';
 
 $route = Router::load('routes.php')->direct(Request::uri(), Request::method());
+
 require $route['uri'];
 $class = new $route['class'];
+
 $function = $route['function'];
 
 if (!Request::ajax())

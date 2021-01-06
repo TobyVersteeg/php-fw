@@ -25,10 +25,6 @@ class LoginController
      */
     public function index()
     {
-        if (isset($_SESSION['user'])) {
-            return View::redirect("home");
-        }
-
         return View::render('login.view');
     }
 
@@ -38,7 +34,6 @@ class LoginController
      */
     public function login()
     {
-        // $securityIssue = decryptToken($_REQUEST['crf_token'], $_SESSION['token']) === false;
         if (isset($_REQUEST['email']) && isset($_REQUEST['password']))
         {
             $sql = "SELECT * FROM `users` WHERE `email`='" . $_REQUEST['email'] . "'";
@@ -51,9 +46,10 @@ class LoginController
                     $this->setUserSession($res);
 
                     return json_encode([
-                        'success'  => true,
+                        'success'  => true, 
                         'message'  => "Succesfull loged in.",
-                        'redirect' =>  ""
+                        'redirect' =>  "wouter",
+                        'food'  => 'Apple',
                     ]);
                 } else {
                     return json_encode([
@@ -91,4 +87,10 @@ class LoginController
         ];
     }
 
+
+    public function tijd($time)
+    {
+        
+
+    }
 }

@@ -10,7 +10,16 @@ class UserController extends Controller
 
     public function index()
     {
-        
+        if (isset($_SESSION) && isset($_SESSION['user'])) {
+            echo "Yes!!!";
+        } else {
+            die('Not loged in');
+        }
+    }
+
+    public function add()
+    {
+
     }
 
     /**
@@ -26,16 +35,7 @@ class UserController extends Controller
      */
     public function update()
     {
-        $data = [
-            'first_name' => "Bernard",
-            'last_name' => "Bondin",
-            'email' => "bernard@codegorilla.nl",
-            'password' => "q3234234q3213^^!^w23123",
-            'birthday' => "1990-12-31",
-            'created' => date("Y-m-d H:i:s"),
-        ];
-
-        UserModel::update($data, 1);
+        
     }
 
     /**
