@@ -93,6 +93,14 @@ class Model
         Mysql::delete($id, self::$model);
     }
 
+    public static function existsById($id, $table)
+    {
+        $sql = "SELECT `id` FROM `" . $table . "` WHERE `id`=" . $id;
+        $res = MySql::query($sql);
+        
+        return $res->rowCount() > 0;
+    }
+
     private static function removeIllegalFields(array $data)
     {
         foreach (@$data as $key => $val) {

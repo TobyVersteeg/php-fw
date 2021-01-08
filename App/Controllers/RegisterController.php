@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Libraries\View;
 use App\Models\UserModel;
-
+use App\Libraries\Email;
 class RegisterController
 {
 
@@ -13,6 +13,10 @@ class RegisterController
         return View::render('register.view');
     }
 
+    /**
+     * Register a new user
+     * Send an email after registeriong is done
+     */
     public function store()
     {
         if (UserModel::exists($_REQUEST['email']) === true)
@@ -49,6 +53,9 @@ class RegisterController
             $msg = new \Plasticbrain\FlashMessages\FlashMessages();
             $msg->info('Welcome <strong>' . $data['first_name'] . '</strong>!');
 
+            $email = new Email('toby@codegorilla.nl', 'Thanks for registering');
+            $email->sendMail('bla!blabla');
+            
             return json_encode([
                 'success'  => true,
                 'message'  => "Ok :-)",

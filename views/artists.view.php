@@ -14,5 +14,4 @@
     <?php else: ?>
         Geen artiesten gevonden
     <?php endif ?>
-
 </div>

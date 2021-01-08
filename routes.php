@@ -19,3 +19,6 @@ $router->get('contact', 'App/Controllers/ContactController.php@index');
 
 $router->get('register', 'App/Controllers/RegisterController.php@index');
 $router->post('register', 'App/Controllers/RegisterController.php@store');
+
+$router->get('email', 'App/Controllers/EmailController.php@index');
+$router->post('email', 'App/Controllers/EmailController.php@store');

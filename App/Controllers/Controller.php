@@ -9,5 +9,5 @@ class Controller
     {
         return $_SERVER;
     }
-
+    
 }

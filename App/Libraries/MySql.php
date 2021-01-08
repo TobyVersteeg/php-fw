@@ -61,7 +61,7 @@ class MySql
         }
 
         self::$lastInsertedId = $dbh->lastInsertId();
-
+        
         return $stmt;
     }
 
